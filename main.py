@@ -1,7 +1,7 @@
 # Stewpid Stop Watch v1.0
 # Fuck AI
 # made in 30mins lessgo (;
-import time, os, math, sys
+import time, os, sys
 
 # Global Vars
 hr, min, sec = 0, 0, 0
@@ -26,7 +26,7 @@ def renderUI():
     print("========================================================================\n")
 
     try:
-        userInp = input(">> ")
+        userInp = input("Ready when you are → ")
         Inp = True if userInp else True
 
         stopwatch.isRunning = True if Inp else False
