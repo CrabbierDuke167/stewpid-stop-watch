@@ -35,7 +35,7 @@ def renderUI():
         while stopwatch.isRunning:
             current_time = next(c)
 
-            formatted_time = f"{current_time[0]} / {current_time[1]} / {current_time[2]}"
+            formatted_time = f"{current_time[0]} hr / {current_time[1]} min / {current_time[2]} sec"
 
             print("========================================================================")
             print(formatted_time.center(72))
