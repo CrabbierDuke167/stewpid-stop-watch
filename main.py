@@ -1,10 +1,21 @@
-# Stewpid Stop Watch v1.0
+# Stewpid Stop Watch v2.0
 # Fuck AI
-# made in 30mins lessgo (;
-import time, os, sys
+# v1.0 made in 30mins lessgo (; 
+# v2.0 made in 30 + 20 mins 
+# cooler TUI
+# works for mac and linux
+import time, os, sys, textwrap
 
 # Global Vars
 hr, min, sec = 0, 0, 0
+ascii_art = textwrap.dedent('''
+    ███████╗████████╗███████╗██╗    ██╗██████╗ ██╗██████╗
+    ██╔════╝╚══██╔══╝██╔════╝██║    ██║██╔══██╗██║██╔══██╗
+    ███████╗   ██║   █████╗  ██║ █╗ ██║██████╔╝██║██║  ██║
+    ╚════██║   ██║   ██╔══╝  ██║███╗██║██╔═══╝ ██║██║  ██║
+    ███████║   ██║   ███████╗╚███╔███╔╝██║     ██║██████╔╝
+    ╚══════╝   ╚═╝   ╚══════╝ ╚═╝╚═╝ ╚═╝     ╚═╝╚═════╝
+''')
 
 
 # StopWatch BluePrint
@@ -18,31 +29,42 @@ class StopWatch:
 
 # UI renderer function
 def renderUI():
-    os.system('cls')
-    print("Stewpid Stop Watch v1.0")
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+    print("------------------------------------------------------------------------")
+    for line in ascii_art.splitlines(): # ascii art centered
+        print("\033[31m" + line.center(72) + "\033[0m")
     print("========================================================================")
     print("\tInput anything to start the timer.")
     print("\tPress Ctrl+C to stop the timer.")
     print("========================================================================\n")
 
     try:
-        userInp = input("Ready when you are → ")
+        userInp = input("Ready when you are ↓ \n")
         Inp = True if userInp else True
 
         stopwatch.isRunning = True if Inp else False
         c = Start()
+        os.system('cls' if os.name == 'nt' else 'clear')
+
 
         while stopwatch.isRunning:
             current_time = next(c)
 
             formatted_time = f"{current_time[0]} hr / {current_time[1]} min / {current_time[2]} sec"
 
+            print("------------------------------------------------------------------------")
+            print("\033[91mTimer Running // Ctrl+C to stop\033[0m")
+            print("------------------------------------------------------------------------")
+            for line in ascii_art.splitlines(): # ascii art centered
+                print("\033[34m" + line.center(72) + "\033[0m")
             print("========================================================================")
             print(formatted_time.center(72))
             print("========================================================================")
 
             time.sleep(1)
-            os.system('cls')
+            os.system('cls' if os.name == 'nt' else 'clear')
+
     except KeyboardInterrupt:
         stopwatch.isRunning = False
         print("========================================================================")
