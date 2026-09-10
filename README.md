@@ -21,7 +21,7 @@ Had this idea **at school**, came home, opened VS Code, and boom yehh . . .
 ### [ Run ]
 
 ```bash
-python3 stopwatch.py
+python3 main.py
 ```
 
 **Start:** type anything + Enter  
@@ -33,4 +33,4 @@ python3 stopwatch.py
 
 Because I wanted to make one.
 
-**Fuck AI.documentations, mini-research, and questionable amounts of free time.**
+**Documentations, mini-research, and questionable amounts of free time.**
