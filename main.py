@@ -8,6 +8,7 @@ import time, os, sys, textwrap
 
 # Global Vars
 hr, min, sec = 0, 0, 0
+time_stopped = (hr, min, sec)
 ascii_art = textwrap.dedent('''
     ███████╗████████╗███████╗██╗    ██╗██████╗ ██╗██████╗
     ██╔════╝╚══██╔══╝██╔════╝██║    ██║██╔══██╗██║██╔══██╗
@@ -33,7 +34,7 @@ def renderUI():
 
     print("------------------------------------------------------------------------")
     for line in ascii_art.splitlines(): # ascii art centered
-        print("\033[31m" + line.center(72) + "\033[0m")
+        print("\033[92m" + line.center(72) + "\033[0m")
     print("========================================================================")
     print("\tInput anything to start the timer.")
     print("\tPress Ctrl+C to stop the timer.")
@@ -67,8 +68,14 @@ def renderUI():
 
     except KeyboardInterrupt:
         stopwatch.isRunning = False
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print("------------------------------------------------------------------------")
+        print("\033[92mTimer Stopped // python3 main.py to restart\033[0m")
+        print("------------------------------------------------------------------------")
+        for line in ascii_art.splitlines(): # ascii art centered
+            print("\033[31m" + line.center(72) + "\033[0m")
         print("========================================================================")
-        print("Timer Stopped".center(72))
+        print(formatted_time.center(72))
         print("========================================================================")
         sys.exit()
 
